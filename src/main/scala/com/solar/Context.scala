@@ -1,3 +1,5 @@
+package com.solar
+
 import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
 

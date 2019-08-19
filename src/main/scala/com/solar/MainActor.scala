@@ -1,12 +1,14 @@
-import MainActor.{Answer, SearchMessage}
-import StackOverflowSearchActor.{SearchResults, StartSearchMessage}
-import akka.actor.{Actor, Props}
-import akka.routing.RoundRobinPool
-import akka.pattern.{ask, pipe}
-import akka.util.Timeout
+package com.solar
 
-import scala.concurrent.{Await, ExecutionContextExecutor, Future}
+import akka.actor.{Actor, Props}
+import akka.pattern.{ask, pipe}
+import akka.routing.RoundRobinPool
+import akka.util.Timeout
+import com.solar.MainActor.{Answer, SearchMessage}
+import com.solar.StackOverflowSearchActor.{SearchResults, StartSearchMessage}
+
 import scala.concurrent.duration._
+import scala.concurrent.{ExecutionContextExecutor, Future}
 
 class MainActor extends Actor {
   private implicit val timeout: Timeout = Timeout(10 seconds)

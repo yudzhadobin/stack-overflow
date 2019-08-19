@@ -1,3 +1,5 @@
+package com.solar
+
 import io.circe.Decoder
 
 case class SearchResult(tags: Seq[String], isAnswered: Boolean)

@@ -1,3 +1,5 @@
+package com.solar
+
 import akka.actor.Props
 
 object Main extends App {

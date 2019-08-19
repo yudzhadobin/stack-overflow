@@ -1,10 +1,12 @@
 plugins {
     id 'java'
+    id 'application'
     id 'scala'
 }
 
 group 'solar'
 version '1.0-SNAPSHOT'
+mainClassName = 'com.solar.Main'
 
 sourceCompatibility = 1.8
 

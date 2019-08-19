@@ -1,15 +1,17 @@
-import StackOverflowSearchActor.{SearchResults, StartSearchMessage}
+package com.solar
+
 import akka.actor.Actor
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.headers.Accept
+import akka.http.scaladsl.coding.Gzip
 import akka.http.scaladsl.model._
+import akka.http.scaladsl.model.headers.Accept
 import akka.http.scaladsl.unmarshalling.Unmarshal
 import akka.pattern.pipe
+import com.solar.StackOverflowSearchActor.{SearchResults, StartSearchMessage}
+import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport._
+import io.circe.{Decoder, Json}
 
 import scala.concurrent.ExecutionContextExecutor
-import io.circe.{Decoder, Json}
-import akka.http.scaladsl.coding.Gzip
-import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport._
 
 class StackOverflowSearchActor extends Actor {
   private implicit val execContext: ExecutionContextExecutor = context.system.dispatcher

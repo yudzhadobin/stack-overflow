@@ -1,9 +1,12 @@
-import MainActor.Answer
-import akka.actor.{ActorRef}
+package com.solar
+
+import akka.actor.ActorRef
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.{HttpApp, Route}
 import akka.pattern.ask
 import akka.util.Timeout
+import com.solar.MainActor.Answer
+import io.circe.Printer
 
 import scala.concurrent.duration._
 import scala.util.{Failure, Success}
