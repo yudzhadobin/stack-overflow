@@ -8,4 +8,5 @@ object Context {
 
   implicit val materializer: ActorMaterializer = ActorMaterializer()
 
+  val maxHttpConnectionCount: Int = 5
 }

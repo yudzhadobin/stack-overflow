@@ -5,7 +5,7 @@ import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.{HttpApp, Route}
 import akka.pattern.ask
 import akka.util.Timeout
-import com.solar.MainActor.Answer
+import com.solar.AggregateActor.Statistic
 import io.circe.Printer
 
 import scala.concurrent.duration._
@@ -21,7 +21,7 @@ class WebServer(mainActor: ActorRef) extends HttpApp {
 
   override protected def routes: Route = (path("search") & get) {
     parameters('tag.*) { tags =>
-      onComplete((mainActor ? MainActor.SearchMessage(tags.toSeq)).mapTo[Map[String, Answer]]) {
+      onComplete((mainActor ? AggregateActor.SearchMessage(tags.toSeq)).mapTo[Map[String, Statistic]]) {
         case Success(value) => complete(StatusCodes.OK, value)
         case Failure(e) => complete(StatusCodes.InternalServerError, e)
       }

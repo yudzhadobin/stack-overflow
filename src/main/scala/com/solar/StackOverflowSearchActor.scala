@@ -27,7 +27,7 @@ class StackOverflowSearchActor extends Actor {
           case Right(v) => v
           case Left(e) => throw e
         }
-      ).map(SearchResults.apply).pipeTo(sender())
+      ).map(SearchResults.apply) pipeTo sender()
   }
 
 
@@ -35,7 +35,6 @@ class StackOverflowSearchActor extends Actor {
     HttpRequest(
       uri = s"https://api.stackexchange.com/2.2/search?pagesize=100&order=desc&sort=creation&tagged=$tag&site=stackoverflow",
       headers = List(Accept(MediaTypes.`application/json`))
-
     )
   }
 }
